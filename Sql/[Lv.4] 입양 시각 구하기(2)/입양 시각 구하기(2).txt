@@ -1,0 +1,26 @@
+-- 코드를 입력하세요
+WITH RECURSIVE HH AS (
+    SELECT 0 AS hour
+    UNION ALL
+    SELECT hour+1 FROM HH WHERE hour<23
+)
+
+select DATE_FORMAT(DATETIME, '%H') as HOUR, count(ANIMAL_ID) AS COUNT
+from HH
+left join HH
+group by HOUR
+having count(ANIMAL_ID)
+order by hour
+
+WITH RECURSIVE HH AS (
+    SELECT 0 AS hour
+    UNION ALL
+    SELECT hour+1 FROM HH WHERE hour<23
+)
+
+
+SELECT hour AS HOUR, COUNT(ANIMAL_ID) AS COUNT
+FROM HH
+LEFT JOIN ANIMAL_OUTS
+ON hour = DATE_FORMAT(ANIMAL_OUTS.DATETIME, '%H')
+GROUP BY hour
