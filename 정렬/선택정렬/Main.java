@@ -34,24 +34,28 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int N = scanner.nextInt();
         int arr[] = new int[N];
-
+        // 입력
         for (int i=0;i<arr.length;i++){
             arr[i] = scanner.nextInt();
         }
-        for(int i=0;i<arr.length;i++){
-            int minIndex = i;
+        // 로직
+        for(int i = 0; i<arr.length; i++){
+            int minarr = i;
             int min = arr[i];
-            for(int j=i;j<arr.length;j++){
+            // 최소값 찾기
+            for(int j = i; j<arr.length; j++){
                 if(min > arr[j]){
                     min = arr[j];
-                    minIndex = j;
+                    minarr = j;
                 }
             }
+            // 교환
             int tmp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = tmp;
+            arr[i] = arr[minarr];
+            arr[minarr] = tmp;
         }
 
+        // 출력
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
